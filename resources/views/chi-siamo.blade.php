@@ -44,7 +44,7 @@
         <li>
         <a href="{{route('Info_membro', ['id' => $membro['id']]) }}">
 
-            {{ $membro['name'] }}
+          {{ $membro['name'] }}
             
         </a>
         </li> 

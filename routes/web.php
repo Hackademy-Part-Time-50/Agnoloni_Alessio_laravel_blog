@@ -3,100 +3,21 @@
 use Illuminate\Support\Facades\Route;
 
 // Homapage
-Route::get('/', function () {
-    return view('homepage',[
-        'nome_blog'=> 'Il mio blog'
-     ]);
-})->name('homepage');
+Route::get('/',[App\Http\Controllers\BaseController::class, 'welcome'])->name('homepage');
 
 //Articoli
-Route::get('/articoli', function () {
-
-    $lista_articoli = [
-            'articolo1'=>['id'=>1,'title'=> 'Primo articolo','category' => 'PHP','description' => 'PHP (acronimo ricorsivo di "PHP: Hypertext Preprocessor", preprocessore di ipertesti; originariamente acronimo di "Personal Home Page"[1]) è un linguaggio di scripting interpretato, originariamente concepito per la programmazione di pagine web dinamiche.','visible' => true],
-
-            'articolo2'=>['id'=>2,'title'=> 'Secondo articolo','category' => 'JS','description' => 'In informatica JavaScript è un linguaggio di programmazione multi paradigma orientato agli eventi, utilizzato sia nella programmazione lato client ','visible' => false],
-
-            'articolo3'=>['id'=>3,'title'=> 'terzo articolo','category' => 'CSS','description' => 'Cascading Style Sheets, meglio noto come CSS (in italiano fogli di stile a cascata), è un linguaggio usato per definire la formattazione di documenti HTML','visible' => true]
-        ];
-
-    // $lista_articoli = [];
-
-    return view('articoli',compact('lista_articoli'));
-
-})->name('articoli');
+Route::get('/articoli', [App\Http\Controllers\BaseController::class, 'articoli'])->name('articoli');
 
 //Articolo singolo 
 
-Route::get('/articolo/{id}',function($id){
-    $lista_articoli = [
-            1=>['id'=>1, 'title'=> 'Primo articolo', 'category' => 'PHP', 'description' => 'PHP (acronimo ricorsivo di "PHP: Hypertext Preprocessor", preprocessore di ipertesti; originariamente acronimo di "Personal Home Page"[1]) è un linguaggio di scripting interpretato, originariamente concepito per la programmazione di pagine web dinamiche.','visible' => true],
-
-            2=>['id'=>2, 'title'=> 'Secondo articolo', 'category' => 'JS', 'description' => 'In informatica JavaScript è un linguaggio di programmazione multi paradigma orientato agli eventi, utilizzato sia nella programmazione lato client ','visible' => false],
-            
-            3=>['id'=>3, 'title'=> 'terzo articolo', 'category' => 'CSS', 'description' => 'Cascading Style Sheets, meglio noto come CSS (in italiano fogli di stile a cascata), è un linguaggio usato per definire la formattazione di documenti HTML','visible' => true]
-        ];
-
-        if(! $lista_articoli[$id]['visible']){
-            abort(404);
-        };
-
-        return view('articolo',[
-            'title'=> $lista_articoli[$id]['title'],
-            'category' => $lista_articoli[$id]['category'],
-            'description' => $lista_articoli[$id]['description'],
-        ]);
-    
-    })->name('articolo');
+Route::get('/articolo/{id}',[App\Http\Controllers\BaseController::class, 'articolo'])->name('articolo');
 
 //Chi siamo / chi sono
-Route::get('/chi-siamo', function () {
-
-    $gruppo = [
-        ['id'=>1, 'name'=> 'Alessio', 'category' => 'PHP', 'description' => 'Alessio è uno sviluppatore esperto in PHP, con oltre 10 anni di esperienza nel campo. Fin dai suoi inizi, Alessio ha dimostrato una particolare inclinazione per la programmazione backend, specializzandosi in PHP. Ha lavorato su vari progetti complessi e ha contribuito allo sviluppo di applicazioni web di grande scala. La sua passione per l\'ottimizzazione e la sicurezza lo rende un elemento fondamentale per ogni team di sviluppo.'],
-        ['id'=>2, 'name'=> 'Francesco', 'category' => 'CSS', 'description' => 'Francesco è un maestro del design front-end, con una particolare predilezione per il CSS. Grazie alla sua attenzione ai dettagli e alla sua creatività, è in grado di trasformare qualsiasi progetto in un\'interfaccia utente elegante e funzionale. Francesco ha collaborato con svariate aziende, contribuendo alla creazione di siti web accattivanti e responsive. La sua conoscenza approfondita di CSS lo rende un punto di riferimento per chiunque desideri migliorare l\'aspetto visivo delle proprie applicazioni web.'],
-        ['id'=>3, 'name'=> 'Giuseppe', 'category' => 'JS', 'description' => 'Giuseppe è uno sviluppatore full-stack con una forte specializzazione in JavaScript. Ha iniziato la sua carriera come sviluppatore front-end, ma la sua curiosità e il desiderio di migliorarsi lo hanno portato a esplorare anche il lato backend. Giuseppe è particolarmente abile nel creare applicazioni web dinamiche e interattive, utilizzando framework come React e Node.js.La sua capacità di risolvere problemi complessi con soluzioni innovative lo rende un membro prezioso del team.']
-    ];
-    if (empty($gruppo)) {
-        return view('pagina_in_costruzione',[
-            'titolo'=>'Pagina in costruzione'
-        ]);
-    }elseif (count($gruppo) === 1) {
-        return view('chi-siamo',[
-            'titolo'=>'Chi sono',
-            'paragrafo'=>'Io sono....',
-            'gruppo'=>$gruppo
-        ]);
-    }else {
-        return view('chi-siamo',[
-            'titolo'=>'Chi siamo',
-            'paragrafo'=>'Noi siamo....',
-            'gruppo'=>$gruppo,
-        ]);
-    }
-
-    
-})->name('about_us');
+Route::get('/chi-siamo', [App\Http\Controllers\BaseController::class, 'About_us'])->name('about_us');
 
 //chi siamo dettagli
 
-Route::get('/gruppo{id}',function($id){
-
-    $gruppo = [
-        1 =>['id'=>1, 'name'=> 'Alessio', 'category' => 'PHP', 'description' => 'Alessio è uno sviluppatore esperto in PHP, con oltre 10 anni di esperienza nel campo. Fin dai suoi inizi, Alessio ha dimostrato una particolare inclinazione per la programmazione backend, specializzandosi in PHP. Ha lavorato su vari progetti complessi e ha contribuito allo sviluppo di applicazioni web di grande scala. La sua passione per l\'ottimizzazione e la sicurezza lo rende un elemento fondamentale per ogni team di sviluppo.'],
-        2 =>['id'=>2, 'name'=> 'Francesco', 'category' => 'CSS', 'description' => 'Francesco è un maestro del design front-end, con una particolare predilezione per il CSS. Grazie alla sua attenzione ai dettagli e alla sua creatività, è in grado di trasformare qualsiasi progetto in un\'interfaccia utente elegante e funzionale. Francesco ha collaborato con svariate aziende, contribuendo alla creazione di siti web accattivanti e responsive. La sua conoscenza approfondita di CSS lo rende un punto di riferimento per chiunque desideri migliorare l\'aspetto visivo delle proprie applicazioni web.'],
-        3 =>['id'=>3, 'name'=> 'Giuseppe', 'category' => 'JS', 'description' => 'Giuseppe è uno sviluppatore full-stack con una forte specializzazione in JavaScript. Ha iniziato la sua carriera come sviluppatore front-end, ma la sua curiosità e il desiderio di migliorarsi lo hanno portato a esplorare anche il lato backend. Giuseppe è particolarmente abile nel creare applicazioni web dinamiche e interattive, utilizzando framework come React e Node.js.La sua capacità di risolvere problemi complessi con soluzioni innovative lo rende un membro prezioso del team.']
-    ];
-
-    if (!array_key_exists($id, $gruppo)) {
-        abort(404);
-    }
-
-    return view('infoTeam',$gruppo[$id]);
-    
-})->name('Info_membro');
+Route::get('/gruppo{id}', [App\Http\Controllers\BaseController::class, 'Details_About_us'])->name('Info_membro');
 
 // contatti
-Route::get('/contatti', function () {
-    return view('contatti');
-})->name('contacts');
+Route::get('/contatti', [App\Http\Controllers\ContactController::class, 'Contatti'])->name('contacts');

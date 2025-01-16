@@ -36,7 +36,7 @@
 </nav>
 
 
-<h1>{{$nome_blog}}</h1>
+<h1>{{config('app.name')}}</h1>
 
 <p>Benvenuti nel mio blog</p>
 
