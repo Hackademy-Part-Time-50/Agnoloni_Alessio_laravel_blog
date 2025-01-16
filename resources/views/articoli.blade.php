@@ -38,11 +38,19 @@
     <h1>Articoli</h1>
 
 
-
-
-
-
-
+  @if(! $lista_articoli)
+      <h3>Nessun articolo disponibile</h3>
+  @else
+    @foreach($lista_articoli as $articolo)
+      @if($articolo['visible'])
+        <div class="mb-3 shadow-sm p-3 rounded">
+          <h3>{{ $articolo['title'] }}</h3>
+          <h6>{{ $articolo['category'] }}</h6>
+          <a href="{{route('articolo',$articolo['id'])}}">Leggi tutto</a>
+        </div>
+      @endif
+    @endforeach
+  @endif
 
 
 

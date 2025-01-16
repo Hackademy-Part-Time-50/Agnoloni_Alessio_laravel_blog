@@ -3,14 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title>Chi siamo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   </head>
 
   <body>
-    <h1>Benvenuto</h1>
-
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,12 +34,15 @@
   </div>
 </nav>
 
+<div>
+    <h1>{{$name}}</h1>
 
+    <h3>{{$category}}</h3>
 
+    <p>{{$description}}</p>
 
-
-
-
+    <a href="{{ route('about_us') }}" class="btn ">Torna a Chi Siamo</a>
+</div>
 
 
 
