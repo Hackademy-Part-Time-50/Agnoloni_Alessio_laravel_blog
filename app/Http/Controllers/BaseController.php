@@ -12,14 +12,15 @@ class BaseController extends Controller
             'nome_blog'=> 'Il mio blog']);
     }
 
+    
     public function articoli()
     {
         $lista_articoli = [
             'articolo1'=>['id'=>1,'title'=> 'Primo articolo','category' => 'PHP','description' => 'PHP (acronimo ricorsivo di "PHP: Hypertext Preprocessor", preprocessore di ipertesti; originariamente acronimo di "Personal Home Page"[1]) è un linguaggio di scripting interpretato, originariamente concepito per la programmazione di pagine web dinamiche.','visible' => true],
 
-            'articolo2'=>['id'=>2,'title'=> 'Secondo articolo','category' => 'JS','description' => 'In informatica JavaScript è un linguaggio di programmazione multi paradigma orientato agli eventi, utilizzato sia nella programmazione lato client ','visible' => false],
+            'articolo2'=>['id'=>2,'title'=> 'Secondo articolo','category' => 'JS','description' => 'In informatica JavaScript è un linguaggio di programmazione multi paradigma orientato agli eventi, utilizzato sia nella programmazione lato client ','visible' => true],
 
-            'articolo3'=>['id'=>3,'title'=> 'terzo articolo','category' => 'CSS','description' => 'Cascading Style Sheets, meglio noto come CSS (in italiano fogli di stile a cascata), è un linguaggio usato per definire la formattazione di documenti HTML','visible' => true]
+            'articolo3'=>['id'=>3,'title'=> 'Terzo articolo','category' => 'CSS','description' => 'Cascading Style Sheets, meglio noto come CSS (in italiano fogli di stile a cascata), è un linguaggio usato per definire la formattazione di documenti HTML','visible' => true]
         ];
 
         // $lista_articoli = [];
@@ -32,9 +33,9 @@ class BaseController extends Controller
         $lista_articoli = [
             1=>['id'=>1, 'title'=> 'Primo articolo', 'category' => 'PHP', 'description' => 'PHP (acronimo ricorsivo di "PHP: Hypertext Preprocessor", preprocessore di ipertesti; originariamente acronimo di "Personal Home Page"[1]) è un linguaggio di scripting interpretato, originariamente concepito per la programmazione di pagine web dinamiche.','visible' => true],
 
-            2=>['id'=>2, 'title'=> 'Secondo articolo', 'category' => 'JS', 'description' => 'In informatica JavaScript è un linguaggio di programmazione multi paradigma orientato agli eventi, utilizzato sia nella programmazione lato client ','visible' => false],
+            2=>['id'=>2, 'title'=> 'Secondo articolo', 'category' => 'JS', 'description' => 'In informatica JavaScript è un linguaggio di programmazione multi paradigma orientato agli eventi, utilizzato sia nella programmazione lato client ','visible' => true],
             
-            3=>['id'=>3, 'title'=> 'terzo articolo', 'category' => 'CSS', 'description' => 'Cascading Style Sheets, meglio noto come CSS (in italiano fogli di stile a cascata), è un linguaggio usato per definire la formattazione di documenti HTML','visible' => true]
+            3=>['id'=>3, 'title'=> 'Terzo articolo', 'category' => 'CSS', 'description' => 'Cascading Style Sheets, meglio noto come CSS (in italiano fogli di stile a cascata), è un linguaggio usato per definire la formattazione di documenti HTML','visible' => true]
         ];
 
         if(! $lista_articoli[$id]['visible']){
