@@ -20,4 +20,5 @@ Route::get('/chi-siamo', [App\Http\Controllers\BaseController::class, 'About_us'
 Route::get('/gruppo{id}', [App\Http\Controllers\BaseController::class, 'Details_About_us'])->name('Info_membro');
 
 // contatti
-Route::get('/contatti', [App\Http\Controllers\ContactController::class, 'Contatti'])->name('contacts');
+Route::get('/contatti', [App\Http\Controllers\ContactController::class, 'form'])->name('contacts');
+Route::post('/contatti',[App\Http\Controllers\ContactController::class, 'receive'])->name('contacts.receive');
