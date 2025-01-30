@@ -6,9 +6,9 @@
       <a href="{{ route('articoli') }}" class="btn" >Torna agli articoli</a> 
     </div>
       
-      <h1>{{ $title }}</h1> 
-      <h6>{{ $category }}</h6> 
-      <p>{{ $description }}</p>
+      <h1>{{ $articolo->title }}</h1> 
+      <h6>{{ $articolo->category }}</h6> 
+      <p>{{ $articolo->description }}</p>
 
   </div>
 </x-layout>

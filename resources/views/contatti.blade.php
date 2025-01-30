@@ -20,8 +20,8 @@
                             <input type="email" name="email" id="email" class="form-control">
                         </div>
                         <div class="col-12">
-                            <label for="message">Messagio</label>
-                            <textarea name="message" id="message" class="form-control" rows="6"></textarea>
+                            <label for="content">Messagio</label>
+                            <textarea name="content" id="content" class="form-control" rows="6"></textarea>
                         </div>
                         <div class="col-12 text-end">
                             <button type="submit" class= "btn btn-primary">Invio</button>
