@@ -9,12 +9,29 @@
       <h3>Nessun articolo disponibile</h3>
   @else
     @foreach($lista_articoli as $articolo)
+    {{--
+        <div class="col-lg-10">
+          <div class="mt-5 text-end">
+            <a href="{{ route('articolo',$articolo->id }}" class="btn btn-primary">{{ $articolo['title'] }}</a>
+          </div>
+        </div>
+    --}}
+
       @if($articolo['visible'])
-        <x-card :route="route('articolo', ['id' => $articolo['id']])" 
-                :title="$articolo['title']" 
-                :articolo="$articolo['category']" 
-        />
-      @endif
+      <div class="shadow-sm p-4 rounded">
+        <div class="row">
+          <div class="col-lg-2 card-body">
+            <x-card :route="route('articolo', ['id' => $articolo['id']])" 
+                    :title="$articolo['title']" 
+                    :articolo="$articolo['category']"
+            />
+            @if ($articolo->image)
+              <img class=img-fluid src="{{Storage::url($articolo->image)}}" alt="{{ $articolo['title'] }}">
+            @endif
+          </div>
+        </div>
+      </div>
+      @endif 
     @endforeach
   @endif
     

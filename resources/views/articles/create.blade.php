@@ -5,7 +5,7 @@
 
     <x-alert_success/>
 
-    <form action="{{ route('articles.store') }}" method="POST">
+    <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row g-3">
             <div class="col-12">
@@ -22,6 +22,10 @@
                 <label for="description">Descrizione</label>
                 <input type="text" name="description" id="description" class="form-control" value="{{ old('description') }}">
                 @error('description') <span class="small text-danger">{{$message}}</span>@enderror
+            </div>
+            <div class="col-12">
+                <label for="image">Immagine</label>
+                <input type="file" name="image" id="image" class="form-control">
             </div>
             <div class="col-12">
                 <label for="body">Corpo</label>

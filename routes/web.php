@@ -13,6 +13,7 @@ Route::get('/articoli', [App\Http\Controllers\BaseController::class, 'articoli']
 //Articolo singolo 
 
 Route::get('/articolo/{id}',[App\Http\Controllers\BaseController::class, 'articolo'])->name('articolo');
+//Route::get('/articoli/{articolo}',[App\Http\Controllers\BaseController::class, 'articolo'])->name('articolo');
 
 //Chi siamo / chi sono
 Route::get('/chi-siamo', [App\Http\Controllers\BaseController::class, 'About_us'])->name('about_us');

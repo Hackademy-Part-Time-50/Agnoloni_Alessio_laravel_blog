@@ -12,7 +12,12 @@ class BaseController extends Controller
             'nome_blog'=> 'Il mio blog']);
     }
 
-    
+    // public function articoli()
+    // {
+    //     return(view('articoli',[$lista_articoli = \App\Models\Article::all(),
+    //     ]));
+        
+    // }
     public function articoli()
     {
         $lista_articoli = \App\Models\Article::all();
@@ -31,6 +36,10 @@ class BaseController extends Controller
     // $lista_articoli = [];
 
     */
+    // public function articolo(\App\Models\Article $articolo)
+    // {   
+    //     return view('articolo',compact('articolo'));
+    // }
     public function articolo($id)
     {   
         $articolo = \App\Models\Article::findOrFail($id);
