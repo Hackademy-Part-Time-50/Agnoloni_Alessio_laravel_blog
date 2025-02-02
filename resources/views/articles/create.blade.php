@@ -1,6 +1,8 @@
 <x-layout titolo="Crea un nuovo articolo">
     <div class="col-lg-6 mx auto">
 
+    <a href="{{ route('articles.index') }}" class="mb-3 btn btn-sm btn-secondary">Indietro</a>
+
     <h1>Crea nuovo Articolo</h1>
 
     <x-alert_success/>

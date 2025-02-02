@@ -1,0 +1,34 @@
+<x-layout titolo='Gestione Articoli'>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <h1>Gestione Articoli</h1>
+        </div>
+        <div class="col-lg-6 text-end">
+            <a href="{{ route('articles.create') }}" class="btn btn-primary">Crea Articolo</a>
+        </div>
+    </div>
+
+    <table class="table table-bordered mt-5">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Titolo</th>
+                <th>Categoria</th>
+                <th>Descrizione</th>
+                <th>Corpo Articolo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($articles as $article)
+            <tr>
+                <td>{{ $article->id }}</td>
+                <td>{{ $article->title }}</td>
+                <td>{{ $article->category }}</td>
+                <td>{{ $article->description }}</td>
+                <td>{{ $article->body }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</x-layout>

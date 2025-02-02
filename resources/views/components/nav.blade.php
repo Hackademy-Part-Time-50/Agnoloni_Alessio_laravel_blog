@@ -11,7 +11,7 @@
                     <a class="nav-link active" aria-current="page" href="{{'/'}}">Home</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{'/articoli'}}">Articoli</a>
+                    <a class="nav-link" href="{{'/articles'}}">Articoli</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{'/contatti'}}">Contatti</a>
@@ -19,10 +19,38 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{'/chi-siamo'}}">Chi Siamo</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('articles.create') }}">Crea articolo</a>
+            </ul>
+            @auth
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ auth()->user()->email }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li class="dropdown-item">
+                            <a class="nav-link" href="{{ route('articles.index') }}">Gestisci articoli</a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Esci</button>
+                            </form>
+                        </li>
+                    </ul>
                 </li>
             </ul>
+            @else
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Registrati</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Accedi</a>
+                </li>
+            </ul>
+            @endauth
         </div>
     </div>
 </nav>
+

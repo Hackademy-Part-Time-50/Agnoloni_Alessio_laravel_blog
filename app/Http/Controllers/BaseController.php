@@ -12,18 +12,29 @@ class BaseController extends Controller
             'nome_blog'=> 'Il mio blog']);
     }
 
+    public function articles()
+    {
+        return view('articles', [
+            'articles' => \App\Models\Article::all(),
+        ]);
+    }
+
+    public function article(\App\Models\Article $article)
+    {
+        return view('article', compact('article'));
+    }
     // public function articoli()
     // {
     //     return(view('articoli',[$lista_articoli = \App\Models\Article::all(),
     //     ]));
         
     // }
-    public function articoli()
-    {
-        $lista_articoli = \App\Models\Article::all();
+    // --public function articoli()
+    // {
+    //     $lista_articoli = \App\Models\Article::all();
 
-        return view('articoli',compact('lista_articoli'));
-    }
+    //     return view('articoli',compact('lista_articoli'));
+    // }
 
 /*$lista_articoli = [
         'articolo1'=>['id'=>1,'title'=> 'Primo articolo','category' => 'PHP','description' => 'PHP (acronimo ricorsivo di "PHP: Hypertext Preprocessor", preprocessore di ipertesti; originariamente acronimo di "Personal Home Page"[1]) è un linguaggio di scripting interpretato, originariamente concepito per la programmazione di pagine web dinamiche.','visible' => true],
@@ -40,14 +51,14 @@ class BaseController extends Controller
     // {   
     //     return view('articolo',compact('articolo'));
     // }
-    public function articolo($id)
-    {   
-        $articolo = \App\Models\Article::findOrFail($id);
+    // --public function articolo($id)
+    // {   
+    //     $articolo = \App\Models\Article::findOrFail($id);
 
-        return view('articolo',[
-            'articolo' => $articolo,
-        ]);
-    }
+    //     return view('articolo',[
+    //         'articolo' => $articolo,
+    //     ]);
+    // }
 
     /*
         $lista_articoli = [
