@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,16 @@ Route::get('/articles/index',[App\Http\Controllers\ArticleController::class, 'in
 
 Route::get('/articles/create',[App\Http\Controllers\ArticleController::class, 'create'])->middleware('auth')->name('articles.create');
 Route::post('/articles/store',[App\Http\Controllers\ArticleController::class, 'store'])->middleware('auth')->name('articles.store');
+
+//modifica articolo
+Route::get('/articles/edit/{article}',[App\Http\Controllers\ArticleController::class, 'edit'])->middleware('auth')->name('articles.edit');
+Route::put('/articles/update/{article}',[App\Http\Controllers\ArticleController::class, 'update'])->middleware('auth')->name('articles.update');
+
+//elimina articolo
+Route::delete('/articles/delete/{article}',[App\Http\Controllers\ArticleController::class, 'destroy'])->middleware('auth')->name('articles.destroy');
+
+Route::resource('categories', CategoryController::class)->middleware('auth')->except('show');
+
 
 //Articolo singolo 
 

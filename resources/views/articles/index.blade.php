@@ -9,6 +9,8 @@
         </div>
     </div>
 
+    <x-alert_success/>
+
     <table class="table table-bordered mt-5">
         <thead>
             <tr>
@@ -27,6 +29,15 @@
                 <td>{{ $article->category }}</td>
                 <td>{{ $article->description }}</td>
                 <td>{{ $article->body }}</td>
+                <td class="text-end">
+                    <a href="{{ route('articles.edit', $article) }}" class="btn btn-sm btn-secondary">Modifica</a>
+
+                    <form action=" {{ route('articles.destroy', $article) }} " method="POST" class="d-inline ms-1">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger">Cancella</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>

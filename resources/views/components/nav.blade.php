@@ -30,6 +30,9 @@
                         <li class="dropdown-item">
                             <a class="nav-link" href="{{ route('articles.index') }}">Gestisci articoli</a>
                         </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link" href="{{ route('categories.index') }}">Gestisci categorie</a>
+                        </li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <form action="/logout" method="POST">
