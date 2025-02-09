@@ -16,6 +16,7 @@
             <tr>
                 <th>#</th>
                 <th>Nome</th>
+                <th>Articoli</th>
                 <th></th>
             </tr>
         </thead>
@@ -24,6 +25,11 @@
                 <tr>
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
+                    <td>
+                        @foreach ($category->articles as $article)
+                        {{ $article->title }}<br>
+                        @endforeach
+                    </td>
 
                     <td class="text-end">
                     <a href="{{ route('categories.edit', $category) }}" class="btn btn-sm btn-secondary">Modifica</a>

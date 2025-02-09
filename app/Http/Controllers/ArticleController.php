@@ -10,9 +10,11 @@ class ArticleController extends Controller
 {
 
     public function index()
-    {
+    {   
+        $articles = Article::where('user_id', auth()->user()->id)->get();
+
         return view('articles.index',[
-            'articles'=>Article::all(),
+            'articles'=>$articles,
         ]);
     }
 
@@ -27,6 +29,8 @@ class ArticleController extends Controller
     {
         $article = Article::create($request->except('_token'));
 
+        $article->user_id = auth()->user()->id;
+
         if($request->hasFile('image') && $request->file('image')->isValid()) {
 
             $folder_name = 'articles/' . $article->id;
@@ -37,8 +41,10 @@ class ArticleController extends Controller
 
             $article->image = $file_path;
 
-            $article->save();
         }  
+
+        $article->save();
+        
         // Article::create([
         //     'title' => $request->title,
         //     'category' => $request->category,
@@ -51,14 +57,22 @@ class ArticleController extends Controller
 
     public function edit(Article $article)
     {
+        if($article->user_id != auth()->user()->id) {
+            abort(403);
+        }    
+
         return view('articles.edit', [
             'article' => $article,
             'categories'=> \App\Models\Category::all(),
         ]);
     }
 
-    public function update(StoreArticleRequest $article, Request $request)
+    public function update(Article $article, StoreArticleRequest $request)
     {
+        if($article->user_id != auth()->user()->id) {
+            abort(403);
+        }
+
         $article->update($request->all());    
 
         return redirect()->route('articles.index')->with(['success'=> 'Articolo modificato correttamente.']);
@@ -66,6 +80,10 @@ class ArticleController extends Controller
 
     public function destroy(Article $article)
     {
+        if($article->user_id != auth()->user()->id) {
+            abort(403);
+        }
+        
         $article->delete();
 
         return redirect()->route('articles.index')->with(['success'=>'Articolo cancellato correttamente.']);

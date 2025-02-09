@@ -74,6 +74,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $category->articles()->update(['category_id' => 7]);
+
         $category->delete();
 
         return redirect()->back()->with(['success'=>'Categoria eliminata correttamente']);

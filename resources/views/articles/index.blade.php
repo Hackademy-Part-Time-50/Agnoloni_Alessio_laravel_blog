@@ -26,7 +26,7 @@
             <tr>
                 <td>{{ $article->id }}</td>
                 <td>{{ $article->title }}</td>
-                <td>{{ $article->category }}</td>
+                <td>{{ $article->category->name }}</td>
                 <td>{{ $article->description }}</td>
                 <td>{{ $article->body }}</td>
                 <td class="text-end">

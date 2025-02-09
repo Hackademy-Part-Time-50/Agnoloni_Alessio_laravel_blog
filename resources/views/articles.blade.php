@@ -48,8 +48,9 @@
                     </div>
                     <div class="col-lg-10">
                         <h4>{{ $article->title }}</h4>
-                        <p>{{ $article->category }}</p>
+                        <!-- <p>{{ $article->category }}</p> -->
                         <p>{{ $article->description }}</p>
+                        <p class="text-muted">{{ $article->user->name }}</p>
 
                         <div class="mt-5 text-end">
                             <a href="{{ route('article', $article->id) }}" class="btn btn-primary">Leggi articolo...</a>

@@ -17,14 +17,14 @@
                 @error('title') <span class="small text-danger">{{$message}}</span>@enderror
             </div>
             <div class="col-12">
-                <label for="category">Categoria</label>
-                <select name="category" id="category" class="form-control">
+                <label for="category_id">Categoria</label>
+                <select name="category_id" id="category_id" class="form-control">
                     @foreach($categories as $category)
-                        <option value="{{ $category->name }}"@selected($category->name === old('category', $article->category))
-                            >{{ $category->name }}</option>
+                        <option value="{{ $category->id }}"@selected($category->id === old('category_id', $article->category_id))
+                            >{{ $category->id }}</option>
                     @endforeach
                 </select>
-                @error('category') <span class="small text-danger">{{$message}}</span>@enderror
+                @error('category_id') <span class="small text-danger">{{$message}}</span>@enderror
             </div>
             <div class="col-12">
                 <label for="description">Descrizione</label>
