@@ -17,14 +17,17 @@
                 @error('title') <span class="small text-danger">{{$message}}</span>@enderror
             </div>
             <div class="col-12">
-                <label for="category_id">Categoria</label>
-                <select name="category_id" id="category_id" class="form-control">
+                <label>Categoria</label>
                     @foreach($categories as $category)
-                        <option value="{{ $category->id }}"@selected($category->id === old('category_id', $article->category_id))
-                            >{{ $category->id }}</option>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" 
+                        value="{{ $category->id }}" name="categories[]" id="category_{{ $category->id }}"
+                        @checked(in_array($category->id, old('categories', $article->categories->pluck('id')->toArray())))>
+                        <label class="form-check-label" for="category_{{ $category->id }}">
+                            {{ $category->name }}
+                        </label>
+                    </div>
                     @endforeach
-                </select>
-                @error('category_id') <span class="small text-danger">{{$message}}</span>@enderror
             </div>
             <div class="col-12">
                 <label for="description">Descrizione</label>

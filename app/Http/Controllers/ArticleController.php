@@ -31,6 +31,8 @@ class ArticleController extends Controller
 
         $article->user_id = auth()->user()->id;
 
+        $article->categories()->attach($request->categories);
+
         if($request->hasFile('image') && $request->file('image')->isValid()) {
 
             $folder_name = 'articles/' . $article->id;
@@ -75,6 +77,9 @@ class ArticleController extends Controller
 
         $article->update($request->all());    
 
+        $article->categories()->detach();
+        $article->categories()->attach($request->categories);
+
         return redirect()->route('articles.index')->with(['success'=> 'Articolo modificato correttamente.']);
     }
 
@@ -83,6 +88,8 @@ class ArticleController extends Controller
         if($article->user_id != auth()->user()->id) {
             abort(403);
         }
+
+        $article->categories()->detach();
         
         $article->delete();
 

@@ -26,7 +26,11 @@
             <tr>
                 <td>{{ $article->id }}</td>
                 <td>{{ $article->title }}</td>
-                <td>{{ $article->category->name }}</td>
+                <td>
+                    @foreach ($article->categories as $category)
+                    <span class="me-2">{{ $category->name }}</span>
+                    @endforeach
+                </td>
                 <td>{{ $article->description }}</td>
                 <td>{{ $article->body }}</td>
                 <td class="text-end">

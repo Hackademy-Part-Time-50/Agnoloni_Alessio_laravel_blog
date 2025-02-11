@@ -16,13 +16,17 @@
                 @error('title') <span class="small text-danger">{{$message}}</span>@enderror
             </div>
             <div class="col-12">
-                <label for="category_id">Categoria</label>
-                <select name="category_id" id="category_id" class="form-control">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
-                @error('category_id') <span class="small text-danger">{{$message}}</span>@enderror
+                <label>Categoria</label>
+                @foreach($categories as $category)
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="categories[]" 
+                    value="{{ $category->id }}" id="category_{{ $category->id }}" 
+                    @checked(in_array($category->id, old('categories', [])))>
+                    <label class="form-check-label" for="category_{{ $category->id }}">
+                        {{ $category->name }}
+                    </label>
+                </div>
+                @endforeach    
             </div>
             <div class="col-12">
                 <label for="description">Descrizione</label>

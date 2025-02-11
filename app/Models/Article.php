@@ -8,9 +8,9 @@ class Article extends Model
 {
     protected $fillable = ['title','category_id','description','body'];
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class);
     }
 
     public function user()

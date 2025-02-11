@@ -3,10 +3,14 @@
   <div class="container mt-6">
 
     <div>
-      <a href="{{ route('articles') }}" class="btn" >Torna agli articoli</a> 
+      <a href="{{ route('articles') }}" class="btn btn-light" >Torna agli articoli</a> 
     </div>
       
-    <h6>{{ $article->category }}</h6> 
+    <div>
+      @foreach ($article->categories as $category)
+        <span class="me-2">{{ $category->name }}</span>
+      @endforeach
+    </div> 
     <h1>{{ $article->title }}</h1> 
 
     <div class="mt-5">
