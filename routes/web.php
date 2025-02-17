@@ -13,6 +13,11 @@ Route::get('/',[App\Http\Controllers\BaseController::class, 'welcome'])->name('h
 //Route::get('/articoli', [App\Http\Controllers\BaseController::class, 'articoli'])->name('articoli');
 Route::get('/articles', [App\Http\Controllers\BaseController::class, 'articles'])->name('articles');
 
+//ANIME
+Route::get('/anime', [App\Http\Controllers\AnimeController::class, 'genres'])->name('anime');
+Route::get('/anime/genre/{genre_id}', [App\Http\Controllers\AnimeController::class, 'byGenre'])->name('anime.byGenre');
+Route::get('/anime/{anime_id}/{genre_id}', [App\Http\Controllers\AnimeController::class, 'show'])->name('anime.show');
+
 //Chi siamo / chi sono
 Route::get('/chi-siamo', [App\Http\Controllers\BaseController::class, 'About_us'])->name('about_us');
 

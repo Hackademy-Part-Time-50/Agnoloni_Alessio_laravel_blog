@@ -14,6 +14,9 @@
                     <a class="nav-link" href="{{'/articles'}}">Articoli</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{'/anime'}}">Anime</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{'/contatti'}}">Contatti</a>
                 </li>
                 <li class="nav-item">
