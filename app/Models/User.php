@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Article::class);
     }
+
+    public static function search($search)
+    {
+        return self::where('name','like',"%$search%")->get();
+    }
 }

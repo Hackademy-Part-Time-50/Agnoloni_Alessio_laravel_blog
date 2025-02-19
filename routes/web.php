@@ -3,8 +3,11 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Livewire\SearchArticles;
+use App\Livewire\UsersSearch;
 use App\Models\Article;
 use Illuminate\Support\Facades\Route;
+
 
 // Homapage
 Route::get('/',[App\Http\Controllers\BaseController::class, 'welcome'])->name('homepage');
@@ -62,3 +65,12 @@ Route::get('/articles/{article}',[App\Http\Controllers\BaseController::class, 'a
 
 //     ]);
 // });
+
+Route::get('/counter', function() {
+
+    return view('PagCounter');
+});
+
+Route::get('/utenti/ricerca', UsersSearch::class);
+
+Route::get('/ricerca/articoli', SearchArticles::class);
