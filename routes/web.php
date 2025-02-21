@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Livewire\SearchArticles;
@@ -74,3 +75,5 @@ Route::get('/counter', function() {
 Route::get('/utenti/ricerca', UsersSearch::class);
 
 Route::get('/ricerca/articoli', SearchArticles::class);
+
+Route::get('/admin/utenti', [App\Http\Controllers\AdminController::class, 'users'])->middleware('auth')->name('admin.users');
